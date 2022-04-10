@@ -5,9 +5,9 @@
 }
 
 #slide {
-  background-image: url("https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGV2ZWxvcGVyfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+  /*background-image: url("https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGV2ZWxvcGVyfGVufDB8fDB8fA%3D%3D&w=1000&q=80");*/
   width: 100%;
-  height: 350px;
+  height: 400px;
 }
 
 #avatar_user{
@@ -19,22 +19,38 @@
 }
 
 #row {
-  margin: 20px 20px 0 20px;
+  margin: 100px 20px 0 20px;
 }
 
 .post {
   /*background-color: #24292e;*/
   border: 10px solid white;
-  height: 300px;
+  height: 350px;
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 
 .image_post {
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .title {
   color: #24292e;
   text-align: center;
   margin-top: 10px;
+}
+
+.title a {
+  text-decoration: none;
+  color: #24292e;
+}
+
+.note {
+  text-align: center;
+}
+
+/*footer*/
+#footer {
+  margin-bottom: 0;
 }
 
