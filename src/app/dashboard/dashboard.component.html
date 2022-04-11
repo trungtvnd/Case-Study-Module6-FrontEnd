@@ -1,1 +1,33 @@
-<p>dashboard works!</p>
+<div class="center_component">
+
+  <!-- Card header -->
+
+  <ul>
+    <li class="nav-item">
+      <a class="nav-link" routerLink=''>Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink='user'>User</a>
+    </li>
+
+    <!-- Not show if user is Guess user -->
+    <li class="nav-item" *ngIf="isnotGuess()">
+      <a class="nav-link" routerLink='admin'>Admin</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+
+
+  <!-- Card content -->
+
+  <!-- Display view of corresponding component -->
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+
+</div>
