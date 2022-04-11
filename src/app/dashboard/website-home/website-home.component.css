@@ -6,8 +6,15 @@
 
 #slide {
   /*background-image: url("https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGV2ZWxvcGVyfGVufDB8fDB8fA%3D%3D&w=1000&q=80");*/
+  margin-top: 56px;
   width: 100%;
   height: 400px;
+}
+
+#header {
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
 
 #avatar_user{
@@ -19,7 +26,7 @@
 }
 
 #row {
-  margin: 100px 100px 0 100px;
+  margin: 80px 80px 0 80px;
 }
 
 .post {
@@ -38,6 +45,9 @@
   color: #24292e;
   text-align: center;
   margin-top: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .title a {
@@ -49,6 +59,9 @@
   text-align: center;
 }
 
+#comment {
+  width: 930px;
+}
 /*footer*/
 #footer {
   margin-bottom: 0;
