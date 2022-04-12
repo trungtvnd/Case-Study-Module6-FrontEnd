@@ -7,6 +7,8 @@ import {AdminHomeComponent} from "./admin-home/admin-home.component";
 import {UserHomeComponent} from "./user-home/user-home.component";
 import {RouterModule} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
+import {WebsiteHomeComponent} from "./website-home/website-home.component";
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -14,7 +16,12 @@ import {MatCardModule} from "@angular/material/card";
   declarations: [
     DashboardComponent,
     AdminHomeComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    WebsiteHomeComponent,
+  ],
+  exports: [
+    DashboardComponent,
+    WebsiteHomeComponent
   ],
   imports: [
     CommonModule,

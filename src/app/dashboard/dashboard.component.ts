@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   isnotGuess(){
     // Return true if user is not Guess
     return this.authService.role!=Role.Guess
@@ -19,5 +20,6 @@ export class DashboardComponent implements OnInit {
   logout(){
     this.authService.logout()
   }
+
 
 }

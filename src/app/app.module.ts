@@ -26,6 +26,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatCardModule} from "@angular/material/card";
 import {AuthInterceptor} from "./service/auth/auth.interceptor";
 import {DashboardModule} from "./dashboard/dashboard.module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {DashboardModule} from "./dashboard/dashboard.module";
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
-    DashboardModule
+    DashboardModule,
+    RouterModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
