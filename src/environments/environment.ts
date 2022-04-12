@@ -5,6 +5,16 @@
 export const environment = {
   production: false,
   apiAuth : 'http://localhost:8080/api/auth',
+  firebaseConfig : {
+    apiKey: "AIzaSyCiOEKBo_4ISmCL0tuvk5lMy495B0G6-Oc",
+    authDomain: "testuploadfile-eacce.firebaseapp.com",
+    databaseURL : 'https://testuploadfile-eacce-default-rtdb.firebaseio.com',
+    projectId: "testuploadfile-eacce",
+    storageBucket: "testuploadfile-eacce.appspot.com",
+    messagingSenderId: "692403935652",
+    appId: "1:692403935652:web:da13a77dc71e7fa70c8931",
+    measurementId: "G-424L9ZS0TJ"
+  }
 };
 
 /*

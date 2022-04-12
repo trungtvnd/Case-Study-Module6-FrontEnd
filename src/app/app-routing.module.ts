@@ -4,25 +4,26 @@ import {LoginComponent} from "./login/login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {GuardGuard} from "./service/auth/guard.guard";
 import {Role} from "./service/auth/auth.service";
-import {AdminHomeComponent} from "./dashboard/admin-home/admin-home.component";
-import {UserHomeComponent} from "./dashboard/user-home/user-home.component";
-import {WebsiteHomeComponent} from "./dashboard/website-home/website-home.component";
-import {HomeComponent} from "./dashboard/home/home.component";
+import {AdminHomeComponent} from "./admin-home/admin-home.component";
+import {UserHomeComponent} from "./user-home/user-home.component";
 import {RegisterComponent} from "./login/register/register.component";
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
-
-
-  {path:'dashboard', component: DashboardComponent,canActivate: [GuardGuard],
-    children:[
-      {path:'register', component: RegisterComponent},
-      {path:'user', component: UserHomeComponent},
-      {path:'admin', component: AdminHomeComponent, canActivate: [GuardGuard], data: { roles: [Role.Admin]} }
-    ]},
-  {path:'**', component: LoginComponent},
+  {path:'register', component: RegisterComponent},
+  {path:'home', component: HomeComponent},
+  {path:'user', component: UserHomeComponent, canActivate :[GuardGuard]},
+  {path:'admin', component: AdminHomeComponent, canActivate :[GuardGuard], data: { roles: [Role.Admin]}},
+  // {path:'dashboard', component: DashboardComponent,
+  //   children:[
+  //     {path:'user', component: UserHomeComponent},
+  //     {path:'admin', component: AdminHomeComponent, canActivate: [GuardGuard], data: { roles: [Role.Admin]} }
+  //   ]},
+  {path:'**', component: HomeComponent},
 ];
 
+// @ts-ignore
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

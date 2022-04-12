@@ -67,124 +67,133 @@
         <a class="nav-link" routerLink="register">Register</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="login">Login</a>
+        <a class="nav-link" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<!--Main-->
-<!--<div class="row" id="row">-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">How to become to a good deverloper</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
-  <!--  </div>-->
-  <!--  <div class="col-sm-2 post">-->
-  <!--    <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>-->
-  <!--    <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>-->
-  <!--    <p class="note">02/02/2002 <br>-->
-  <!--      Username</p>-->
+Main
+<div class="row" id="row">
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">How to become to a good deverloper</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
+    </div>
+    <div class="col-sm-2 post">
+      <img src="../../../assets/image/avatar1.png" height="150" width="150" class="image_post"/>
+      <h5 class="title"><a href="" data-bs-toggle="modal" data-bs-target="#myModal3">Title</a></h5>
+      <p class="note">02/02/2002 <br>
+        Username</p>
 
-<!--    </div>-->
-<div><router-outlet></router-outlet></div>
+    </div>
+<div>
+
+<mat-card-content>
+  <!-- Display view of corresponding component -->
+  <router-outlet></router-outlet>
+</mat-card-content>
+
+
+</div>
+
 <!--</div>-->
 
 <!--Content-->

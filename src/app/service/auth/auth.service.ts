@@ -31,8 +31,6 @@ export class AuthService {
   isLoggedIn = false;
   isLoginFailed = false;
 
-  admin:object = {authority: 'ADMIN'}
-  user:object = {authority: 'USER'}
   constructor(private httpClient:HttpClient,
   private router:Router,
               private tokenService: TokenService) { }
@@ -78,8 +76,14 @@ export class AuthService {
             this.role = Role.User
           }
         }
-        console.log(this.role)
-        this.router.navigate(['/dashboard'])
+        console.log('role',this.role)
+        if(this.role === Role.Admin){
+          this.router.navigate(['/admin'])
+        }else if(this.role === Role.User){
+          this.router.navigate(['/user'])
+        }else {
+          this.router.navigate(['/home'])
+        }
       }else {
         this.isLoggedIn = false;
         this.isLoginFailed = true;

@@ -3,10 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserHomeComponent } from './dashboard/user-home/user-home.component';
-import { AdminHomeComponent } from './dashboard/admin-home/admin-home.component';
-import { WebsiteHomeComponent } from './dashboard/website-home/website-home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -27,12 +23,14 @@ import {MatCardModule} from "@angular/material/card";
 import {AuthInterceptor} from "./service/auth/auth.interceptor";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {RouterModule} from "@angular/router";
+import {HomeComponent} from "./home/home.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +38,6 @@ import {RouterModule} from "@angular/router";
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
