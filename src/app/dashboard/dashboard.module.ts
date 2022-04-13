@@ -9,6 +9,7 @@ import {RouterModule} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
 import {WebsiteHomeComponent} from "./website-home/website-home.component";
 import { HomeComponent } from '../home/home.component';
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -23,11 +24,12 @@ import { HomeComponent } from '../home/home.component';
     DashboardComponent,
     WebsiteHomeComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatCardModule,
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatCardModule,
+        MatButtonModule,
 
-  ]
+    ]
 })
 export class DashboardModule { }

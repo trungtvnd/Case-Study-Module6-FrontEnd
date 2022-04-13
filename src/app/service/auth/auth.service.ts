@@ -24,6 +24,7 @@ const ROLE_KEY = 'Role_Key';
   providedIn: 'root'
 })
 export class AuthService {
+  nameLogin!: string
   role!: Role;
   name!: string;
   status = '';
@@ -67,8 +68,8 @@ export class AuthService {
         this.tokenService.setRoles(data.roles)
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-
-
+        this.nameLogin = data.name
+        console.log(this.nameLogin)
         for (let i = 0; i < data.roles.length; i++) {
           if(data.roles[i]['authority'] === 'ADMIN'){
             this.role = Role.Admin
@@ -84,6 +85,7 @@ export class AuthService {
         }else {
           this.router.navigate(['/home'])
         }
+
       }else {
         this.isLoggedIn = false;
         this.isLoginFailed = true;

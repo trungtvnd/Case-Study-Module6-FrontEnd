@@ -8,13 +8,18 @@ import {AdminHomeComponent} from "./admin-home/admin-home.component";
 import {UserHomeComponent} from "./user-home/user-home.component";
 import {RegisterComponent} from "./login/register/register.component";
 import {HomeComponent} from "./home/home.component";
+import {UserComponent} from "./user/user/user.component";
+import {DialogUserComponent} from "./user/dialog-user/dialog-user.component";
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
   {path:'home', component: HomeComponent},
-  {path:'user', component: UserHomeComponent, canActivate :[GuardGuard]},
-  {path:'admin', component: AdminHomeComponent, canActivate :[GuardGuard], data: { roles: [Role.Admin]}},
+  {path:'createPost', component: DialogUserComponent},
+  {path:'user', component: UserComponent},
+  {path:'admin', component: AdminHomeComponent},
+  // {path:'user', component: UserComponent, canActivate :[GuardGuard]},
+  // {path:'admin', component: AdminHomeComponent, canActivate :[GuardGuard], data: { roles: [Role.Admin]}},
   // {path:'dashboard', component: DashboardComponent,
   //   children:[
   //     {path:'user', component: UserHomeComponent},

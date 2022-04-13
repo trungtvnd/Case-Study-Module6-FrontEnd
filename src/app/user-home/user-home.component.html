@@ -27,59 +27,16 @@
   </div>
   <div>
     <table class="table">
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40" class="image_title"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
+      <tr *ngFor=" let post of posts">
+        <td><img src="{{post.avatarPost}}" height="40" width="40" class="image_title"/></td>
+        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3"
+               class="title_text">Title: {{post.title}}</a></td>
         <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
-      </tr>
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
-      </tr>
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
-      </tr>
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
-      </tr>
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
-      </tr>
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
-      </tr>
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
-      </tr>
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
-      </tr>
-      <tr>
-        <td><img src="../../assets/image/avatar1.png" height="40" width="40"/></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal3" class="title_text">Title: How to become to a good developer</a></td>
-        <td><a href="" data-bs-toggle="modal" data-bs-target="#myModal1">Update</a></td>
-        <td><a href="" class="delete">Delete</a></td>
+        <td>
+          <button type="button" (click)="delete(post.id)" class="btn" mat-icon-button style="color: red">
+            delete
+          </button>
+        </td>
       </tr>
     </table>
   </div>
@@ -100,19 +57,25 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="form-floating mb-3 mt-3">
-            <input type="file" class="form-control" id="avatar" placeholder="Enter avatar" name="avatar">
+            <input type="file"
+                   id="file"
+                   #userPhoto
+                   (change)="onFileSelected($event)"
+                   name="image"
+                   autocomplete="off"
+            />
             <!--          <label for="avatar">Avatar</label>-->
           </div>
           <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+            <input type="text" class="form-control"  placeholder="Enter title" name="title">
             <label for="title">Title</label>
           </div>
           <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="content" placeholder="Enter content" name="content">
+            <input type="text" class="form-control" placeholder="Enter content" name="content">
             <label for="content">Content</label>
           </div>
           <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="description" placeholder="Enter description" name="description">
+            <input type="text" class="form-control"  placeholder="Enter description" name="description">
             <label for="description">Description</label>
           </div>
           <div class="form-floating mb-3 mt-3">

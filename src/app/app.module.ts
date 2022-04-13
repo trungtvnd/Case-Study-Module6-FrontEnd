@@ -24,13 +24,20 @@ import {AuthInterceptor} from "./service/auth/auth.interceptor";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {RouterModule} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import { DialogUserComponent } from './user/dialog-user/dialog-user.component';
+import {UserComponent} from "./user/user/user.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent,
+    DialogUserComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,9 @@ import {HomeComponent} from "./home/home.component";
     MatSortModule,
     MatCardModule,
     DashboardModule,
-    RouterModule
+    RouterModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
