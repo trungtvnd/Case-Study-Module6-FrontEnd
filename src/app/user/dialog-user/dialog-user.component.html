@@ -1,8 +1,8 @@
 <h1 mat-dialog-title>Create Post</h1>
 <div mat-dialog-content id="formPost">
-  <form [formGroup]="formPost" (ngSubmit)="createPost()" class="example-form " >
+  <form [formGroup]="formPost" (ngSubmit)="createPost()" class="example-form ">
     <mat-form-field appearance="legacy" class="example-full-width">
-      <mat-error *ngIf="!formPost.get('title')?.value
+      <mat-error *ngIf="formPost.get('title')?.invalid
         && formPost.get('title')?.touched">Not blank</mat-error>
       <mat-label>Title</mat-label>
       <input matInput placeholder="Placeholder" formControlName="title">
@@ -52,9 +52,9 @@
     </div>
     <div mat-dialog-actions [align]="'end'">
       <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-      <button mat-raised-button color="primary" style="margin-left: 8px">Save</button>
-<!--      [disabled]="formPost.invalid || fb == ''"-->
+      <button mat-raised-button color="primary" style="margin-left: 8px"
+              [disabled]="formPost.invalid || fb == ''">Save</button>
     </div>
-  </form >
+  </form>
 
 </div>
