@@ -33,6 +33,7 @@ export class DialogUserComponent implements OnInit {
   fb: any = '';
   downloadURL!: Observable<string>;
 
+
   constructor(private storage: AngularFireStorage,
               private postService:PostService,
               private statusService:StatusService,
@@ -63,7 +64,8 @@ export class DialogUserComponent implements OnInit {
     this.getAllStatus()
     console.log('nameLogin',this.authService.nameLogin)
     this.findUserByFullName(this.authService.nameLogin)
-    if(this.editData){
+
+    if(this.editData.id){
       this.formPost.controls['id'].setValue(this.editData.id);
       this.formPost.controls['title'].setValue(this.editData.title);
       this.formPost.controls['dateCreate'].setValue(this.editData.dateCreate);
@@ -126,6 +128,7 @@ export class DialogUserComponent implements OnInit {
   }}
 
   public editPost(){
+    // this.postService.editPost(this.formPost.value, this.editData.id)
     this.postService.editPost(this.formPost.value, this.editData.id)
       .subscribe({
         next:(res) =>{

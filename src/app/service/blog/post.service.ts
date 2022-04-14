@@ -26,8 +26,8 @@ export class PostService {
     return this.httpClient.post<Post>('http://localhost:8080/user/post', post)
   }
 
-  editPost(post: Post, id:number): Observable<Post>{
-    return this.httpClient.put<Post>('http://localhost:8080/user/post/' + id, post)
+  editPost(post: Post,id: number): Observable<any>{
+    return this.httpClient.put<any>('http://localhost:8080/user/post/' + post.id, post)
   }
 
 }
