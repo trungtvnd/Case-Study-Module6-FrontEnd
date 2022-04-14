@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../service/auth/auth.service";
+import {AuthService, Role} from "../service/auth/auth.service";
 import {Router} from "@angular/router";
 import {UserService} from "../service/blog/user.service";
 import firebase from "firebase/compat";
@@ -13,6 +13,7 @@ import {User} from "../model/User";
 })
 export class HomeComponent implements OnInit {
   nameLogin!:string | null
+  roleLogin!:any
   user!:User
 
   constructor(private authService:AuthService,
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.nameLogin = localStorage.getItem('nameLogin')
+    this.roleLogin = localStorage.getItem('roleLogin')
     this.findUser(this.nameLogin)
   }
 
@@ -33,6 +35,7 @@ export class HomeComponent implements OnInit {
   public logout(){
     localStorage.removeItem('nameLogin')
     localStorage.removeItem('idLogin')
+    localStorage.removeItem('roleLogin')
     this.router.navigate(['/login'])
   }
 
@@ -42,6 +45,7 @@ export class HomeComponent implements OnInit {
       console.log(data.id)
       localStorage.setItem("idLogin", String(data.id))
       localStorage.setItem("userLogin", JSON.stringify(this.user))
+
     })
   }
 

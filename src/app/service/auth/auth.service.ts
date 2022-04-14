@@ -91,6 +91,7 @@ export class AuthService {
           this.router.navigate(['/home'])
         }
         localStorage.setItem("nameLogin", data.name)
+        localStorage.setItem("roleLogin", this.role)
 
       }else {
         this.isLoggedIn = false;

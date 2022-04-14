@@ -45,6 +45,7 @@ export class AdminHomeComponent implements OnInit {
 
         this.getAllUser()
         this.getAllPost()
+      console.log(this.getAllUser())
     }
 
     getAllUser() {
@@ -91,5 +92,11 @@ export class AdminHomeComponent implements OnInit {
             );
         }
     }
+  public logout(){
+    localStorage.removeItem('nameLogin')
+    localStorage.removeItem('idLogin')
+    localStorage.removeItem('roleLogin')
+    this.router.navigate(['/login'])
+  }
 
 }

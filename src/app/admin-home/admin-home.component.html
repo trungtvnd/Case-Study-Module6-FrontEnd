@@ -8,10 +8,10 @@
   <div id="menu">
     <div>
 <!--      <h5><a href="" data-bs-toggle="modal" data-bs-target="#myModal" class="list_menu">Create New Post</a></h5>-->
-      <h5><a href="user-home.component.html" class="list_menu">List Post</a></h5>
+      <h5><a routerLink="" class="list_menu">Home</a></h5>
       <h5><a href="" data-bs-toggle="modal" data-bs-target="#myModal" class="list_menu" >List User</a></h5>
 <!--      <h5><a href="" data-bs-toggle="modal" data-bs-target="#myModal2" class="list_menu">View Profile</a></h5>-->
-      <h5><a href="" class="list_menu">Log out</a></h5>
+      <h5><a (click)="logout()" class="list_menu">Log out</a></h5>
     </div>
   </div>
 </div>

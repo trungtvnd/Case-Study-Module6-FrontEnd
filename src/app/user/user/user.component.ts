@@ -50,8 +50,10 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllPostByUserId();
+    this.nameLogin = localStorage.getItem('nameLogin')
     this.user = JSON.parse(<string>localStorage.getItem("userLogin"))
     console.log(this.user)
+    console.log('ancascac',this.nameLogin)
 
   }
 
@@ -138,6 +140,14 @@ export class UserComponent implements OnInit {
   openUserDetail() {
 this.router.navigate([''])
   }
+
+  public logout(){
+    localStorage.removeItem('nameLogin')
+    localStorage.removeItem('idLogin')
+    localStorage.removeItem('roleLogin')
+    this.router.navigate(['/login'])
+  }
+
 
 
   getUser() {

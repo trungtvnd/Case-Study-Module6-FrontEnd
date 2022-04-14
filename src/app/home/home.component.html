@@ -74,8 +74,9 @@
 
         <button mat-button [matMenuTriggerFor]="menu"><a class="nav-link">{{nameLogin}}</a></button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/user">View Profile</button>
-          <button mat-menu-item><a class="nav-link" (click)="logout()">Logout</a></button>
+          <button mat-menu-item routerLink="/user" *ngIf="roleLogin == 'USER'">View Profile</button>
+          <button mat-menu-item routerLink="/admin" *ngIf="roleLogin == 'ADMIN'">Management</button>
+          <button mat-menu-item  class="nav-link" (click)="logout()">Logout</button>
         </mat-menu>
       </li>
 

@@ -29,50 +29,53 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {DialogUserComponent} from './user/dialog-user/dialog-user.component';
 import {UserComponent} from "./user/user/user.component";
+
+import {NgxPaginationModule} from "ngx-pagination";
+import {UserPostDetailComponent} from './user/user-post-detail/user-post-detail.component';
+import {MatMenuModule} from "@angular/material/menu";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {Ng2OrderModule} from "ng2-order-pipe";
-import {NgxPaginationModule} from "ngx-pagination";
-import { UserPostDetailComponent } from './user/user-post-detail/user-post-detail.component';
-import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LoginComponent,
-        RegisterComponent,
-        HomeComponent,
-        UserComponent,
-        DialogUserComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatRadioModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatCardModule,
-        DashboardModule,
-        RouterModule,
-        Ng2SearchPipeModule,
-        Ng2OrderModule,
-        NgxPaginationModule,
-        AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
-    ],
-    providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    UserComponent,
+    DialogUserComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule,
+    MatMenuModule,
+    DashboardModule,
+    RouterModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+
+  ],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
