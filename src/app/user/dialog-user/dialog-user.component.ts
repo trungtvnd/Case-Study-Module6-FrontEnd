@@ -49,14 +49,14 @@ export class DialogUserComponent implements OnInit {
 
     this.formPost = this.formBuilder.group({
       id:[''],
-      dateCreate:[''],
+      dateCreate:['',],
       title : ['',[Validators.required]],
       content : ['',[Validators.required]],
       description: ['', [Validators.required]],
       avatarPost : ['',[Validators.required]],
       status : ['',[Validators.required]],
       hashTags:['', [Validators.required]],
-      user:['', [Validators.required]],
+      user:[''],
     })
     this.getAllPost()
     this.getAllHashtags()
@@ -100,7 +100,6 @@ export class DialogUserComponent implements OnInit {
 
 
   createPost() {
-    if(!this.editData){
       const post = {
         id: this.formPost.value.id,
         title: this.formPost.value.title,
@@ -119,11 +118,8 @@ export class DialogUserComponent implements OnInit {
         this.formPost.reset();
         this.matDialogRef.close();
       });
-    }else {
-      this.editPost()
 
-
-  }}
+  }
 
   public editPost(){
     this.postService.editPost(this.formPost.value, this.editData.id)
