@@ -29,6 +29,8 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import { DialogUserComponent } from './user/dialog-user/dialog-user.component';
 import {UserComponent} from "./user/user/user.component";
+import { UserPostDetailComponent } from './user/user-post-detail/user-post-detail.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {UserComponent} from "./user/user/user.component";
     RegisterComponent,
     HomeComponent,
     UserComponent,
-    DialogUserComponent
+    DialogUserComponent,
+    UserPostDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import {UserComponent} from "./user/user/user.component";
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
+    MatMenuModule,
     DashboardModule,
     RouterModule,
     AngularFireStorageModule,
