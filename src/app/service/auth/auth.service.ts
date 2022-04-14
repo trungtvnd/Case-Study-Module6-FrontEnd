@@ -9,6 +9,8 @@ import {SignUp} from "../../model/sign-up-form";
 import {SignInForm} from "../../model/sign-in-form";
 import {JwtResponse} from "../../model/jwt-response";
 import {TokenService} from "./token.service";
+import {UserService} from "../blog/user.service";
+import {User} from "../../model/User";
 
 
 export enum Role{
@@ -28,13 +30,16 @@ export class AuthService {
   role!: Role;
   name!: string;
   status = '';
+  user!:User;
+  idUser!:number;
 
   isLoggedIn = false;
   isLoginFailed = false;
 
   constructor(private httpClient:HttpClient,
   private router:Router,
-              private tokenService: TokenService) { }
+              private tokenService: TokenService,
+              private userService:UserService) { }
 
   public signUp(signUp:SignUp):Observable<any>{
     return this.httpClient.post<any>(API_AUTH + '/signup', signUp);
@@ -81,10 +86,11 @@ export class AuthService {
         if(this.role === Role.Admin){
           this.router.navigate(['/admin'])
         }else if(this.role === Role.User){
-          this.router.navigate(['/user'])
+          this.router.navigate(['/'])
         }else {
           this.router.navigate(['/home'])
         }
+        localStorage.setItem("nameLogin", data.name)
 
       }else {
         this.isLoggedIn = false;
@@ -94,8 +100,6 @@ export class AuthService {
         this.status = 'Login Failed! Please try again!'
       }
     })
-
-
   }
   logout(){
     this.router.navigate(['/login']);
@@ -105,9 +109,5 @@ export class AuthService {
     // return true if the user enter correct user name and password
     return this.isLoggedIn
   }
-
-
-
-
 
 }

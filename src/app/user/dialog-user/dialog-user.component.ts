@@ -171,7 +171,6 @@ export class DialogUserComponent implements OnInit {
       this.idUser = data.id
       console.log(data)
     })
-
   }
 
 

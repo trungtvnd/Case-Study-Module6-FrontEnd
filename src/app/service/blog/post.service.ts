@@ -14,6 +14,10 @@ export class PostService {
     return this.httpClient.get<Post[]>('http://localhost:8080/user/post')
   }
 
+  findAllPostByUserId(idUser:any):Observable<Post[]>{
+    return this.httpClient.get<Post[]>(`http://localhost:8080/user/post/displayByUser/${idUser}`)
+  }
+
   findAllPostByTitle(title: string): Observable<Post[]>{
     return this.httpClient.get<Post[]>('http://localhost:8080/user/post/findByName/' + title)
   }
