@@ -10,6 +10,8 @@ import {MatCardModule} from "@angular/material/card";
 import {WebsiteHomeComponent} from "./website-home/website-home.component";
 import { HomeComponent } from '../home/home.component';
 import {MatButtonModule} from "@angular/material/button";
+import {FormsModule} from "@angular/forms";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 
@@ -29,6 +31,9 @@ import {MatButtonModule} from "@angular/material/button";
         RouterModule,
         MatCardModule,
         MatButtonModule,
+        FormsModule,
+        NgxPaginationModule,
+
 
     ]
 })
