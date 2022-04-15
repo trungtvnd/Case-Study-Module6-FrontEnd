@@ -65,7 +65,7 @@ export class DialogUserComponent implements OnInit {
     console.log('nameLogin',this.authService.nameLogin)
     this.findUserByFullName(this.authService.nameLogin)
 
-    if(this.editData.id){
+    if(this.editData){
       this.formPost.controls['id'].setValue(this.editData.id);
       this.formPost.controls['title'].setValue(this.editData.title);
       this.formPost.controls['dateCreate'].setValue(this.editData.dateCreate);

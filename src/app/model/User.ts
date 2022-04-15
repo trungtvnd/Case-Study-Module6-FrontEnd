@@ -10,6 +10,6 @@ export interface User {
   address: string;
   phone: string;
   avatar: string;
-  status: any;
+  status: boolean;
   role: Role[];
 }

@@ -63,14 +63,14 @@
       </form>
       <img src="../../assets/image/avatar1.png" height="40" width="40" id="avatar_user"/></div>
     <ul class="navbar-nav me-auto">
-      <li class="nav-item" *ngIf="!nameLogin">
+      <li class="nav-item" *ngIf="!checkLogin">
         <button mat-button [matMenuTriggerFor]="menu"><a class="nav-link" >Login</a></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="login">Login</button>
           <button mat-menu-item routerLink="register">Register</button>
         </mat-menu>
       </li>
-      <li class="nav-item" *ngIf="nameLogin">
+      <li class="nav-item" *ngIf="checkLogin">
 
         <button mat-button [matMenuTriggerFor]="menu"><a class="nav-link">{{nameLogin}}</a></button>
         <mat-menu #menu="matMenu">

@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   nameLogin!:string | null
   roleLogin!:any
   user!:User
+  checkLogin = false
 
   constructor(private authService:AuthService,
               private router:Router,
@@ -22,15 +23,14 @@ export class HomeComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
+    this.checkLogin = this.authService.isLoggedIn
     this.nameLogin = localStorage.getItem('nameLogin')
     this.roleLogin = localStorage.getItem('roleLogin')
+
     this.findUser(this.nameLogin)
   }
 
-  public checkLogin(){
 
-    return this.authService.loggined()
-  }
 
   public logout(){
     localStorage.removeItem('nameLogin')
