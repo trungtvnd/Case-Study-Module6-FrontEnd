@@ -1,0 +1,142 @@
+<header class="header text-center">
+  <h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="index.html">{{user.userName}}</a></h1>
+
+  <nav class="navbar navbar-expand-lg navbar-dark" >
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navigation" class="collapse navbar-collapse flex-column" >
+      <div class="profile-section pt-3 pt-lg-0">
+        <img class="profile-image mb-3 rounded-circle mx-auto" src="{{user.avatar}}" alt="image" >
+
+        <div class="bio mb-3">{{user.email}}<br><a href="about.html">Find out more about me</a></div><!--//bio-->
+        <hr>
+      </div>
+      <!--//profile-section-->
+
+      <ul class="navbar-nav flex-column text-start">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/home"><i class="fas fa-home fa-fw me-2"></i>Blog Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="blog-post.html"><i class="fas fa-bookmark fa-fw me-2"></i>Blog Post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html"><i class="fas fa-user fa-fw me-2"></i>About Me</a>
+        </li>
+      </ul>
+
+      <div class="my-2 my-md-3">
+        <a class="btn btn-primary" href="https://themes.3rdwavemedia.com/" target="_blank">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="main-wrapper">
+
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container text-center single-col-max-width">
+      <h3 class="heading">DevBlog - A Blog Template Made For Developers</h3>
+      <div class="intro">Welcome to our blog. Subscribe and get our latest blog post </div>
+      <div class="single-form-max-width pt-3 mx-auto">
+      </div><!--//single-form-max-width-->
+    </div><!--//container-->
+  </section>
+
+  <section class="blog-list px-3 py-5 p-md-5">
+
+
+      <div style="margin-top: 10px">
+        <mat-form-field appearance="standard">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        </mat-form-field>
+        <div style="margin-left: 50px" style="float: right">
+          <button class="btn btn-primary has-icon btn-block" type="button" data-toggle="modal"
+                  data-target="#threadModal" style="background-color: #05853c">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-plus mr-2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <a (click)="openDialogPost()">New Discussion</a>
+          </button>
+          <div class="dropdown" style="margin-left: 20px">
+            <button class="dropbtn">Filter</button>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div></div>
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort id="matTable">
+
+            <!-- ID Column -->
+            <!--        <ng-container matColumnDef="id">-->
+            <!--          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>-->
+            <!--          <td mat-cell *matCellDef="let row"> {{row.id}} </td>-->
+            <!--        </ng-container>-->
+
+            <!--        image-->
+            <ng-container matColumnDef="avatarPost">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header id="avatarPost">Image</th>
+              <td mat-cell *matCellDef="let row">
+                <img src="{{row.avatarPost}}" alt="" style="height: 90px; width: 90px">
+              </td>
+            </ng-container>
+
+            <!-- Title Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Titile</th>
+              <td mat-cell *matCellDef="let row"> {{row.title}}</td>
+            </ng-container>
+
+            <!-- Description Column -->
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Description</th>
+              <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            </ng-container>
+
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
+              <td mat-cell *matCellDef="let row">
+                <button (click)="editPost(row)" mat-icon-button color="primary">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="deletePost(row.id)" mat-icon-button color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" style="background-color: #05ce5d"></mat-paginator>
+        </div>
+      </div>
+
+  </section>
+
+  <footer class="footer text-center py-2 theme-bg-dark">
+
+    <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+    <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+
+  </footer>
+
+</div><!--//main-wrapper-->

@@ -35,6 +35,7 @@ import {UserPostDetailComponent} from './user/user-post-detail/user-post-detail.
 import {MatMenuModule} from "@angular/material/menu";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {Ng2OrderModule} from "ng2-order-pipe";
+import {User1Component} from "./user1/user1.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {Ng2OrderModule} from "ng2-order-pipe";
     RegisterComponent,
     HomeComponent,
     UserComponent,
-    DialogUserComponent
+    DialogUserComponent,
+    User1Component
   ],
   imports: [
     BrowserModule,
