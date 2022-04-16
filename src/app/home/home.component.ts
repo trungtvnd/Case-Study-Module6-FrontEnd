@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {UserService} from "../service/blog/user.service";
 import firebase from "firebase/compat";
 import {User} from "../model/User";
+import {PostService} from "../service/blog/post.service";
+import {Post} from "../model/Post";
 
 
 @Component({
@@ -16,17 +18,20 @@ export class HomeComponent implements OnInit {
   roleLogin!:any
   user!:User
   checkLogin = false
+  post!:Post
+  posts!:Post[]
 
   constructor(private authService:AuthService,
               private router:Router,
-              private userService:UserService
+              private userService:UserService,
+              private postService:PostService
               ) { }
 
   ngOnInit(): void {
     this.checkLogin = this.authService.isLoggedIn
     this.nameLogin = localStorage.getItem('nameLogin')
     this.roleLogin = localStorage.getItem('roleLogin')
-
+    this.getAllPost()
     this.findUser(this.nameLogin)
   }
 
@@ -48,6 +53,25 @@ export class HomeComponent implements OnInit {
 
     })
   }
+  getPostDetail(id: number) {
+    this.postService.findPostById(id).subscribe(data => {
+      this.post = data;
+      console.log(data)
+      localStorage.setItem('post', JSON.stringify(data))
+    })
+
+  }
+  public getAllPost(){
+    this.postService.findAllPost().subscribe({
+      next:(res)=>{
+        this.posts = res
+
+      }, error:(err)=>{
+        alert('Error while searching product')
+      }
+    })
+  }
+
 
 
 

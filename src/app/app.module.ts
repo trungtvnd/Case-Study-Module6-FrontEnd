@@ -36,6 +36,8 @@ import {MatMenuModule} from "@angular/material/menu";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {Ng2OrderModule} from "ng2-order-pipe";
 import {User1Component} from "./user1/user1.component";
+import {CKEditor5, CKEditorModule} from "@ckeditor/ckeditor5-angular";
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -45,13 +47,15 @@ import {User1Component} from "./user1/user1.component";
     HomeComponent,
     UserComponent,
     DialogUserComponent,
-    User1Component
+    User1Component,
+    PostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    CKEditorModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -68,6 +72,7 @@ import {User1Component} from "./user1/user1.component";
     MatCardModule,
     MatMenuModule,
     DashboardModule,
+
     RouterModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,

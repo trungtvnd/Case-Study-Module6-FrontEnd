@@ -13,6 +13,9 @@ import {AuthService} from "../../service/auth/auth.service";
 import {UserService} from "../../service/blog/user.service";
 import {User} from "../../model/User";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+// @ts-ignore
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 
 @Component({
   selector: 'app-dialog-user',
@@ -20,6 +23,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./dialog-user.component.css']
 })
 export class DialogUserComponent implements OnInit {
+  public Editor = ClassicEditor;
   formPost!: FormGroup
   posts!: Post[];
   status!: Status[];

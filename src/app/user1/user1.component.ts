@@ -52,6 +52,7 @@ export class User1Component implements OnInit {
     this.nameLogin = localStorage.getItem('nameLogin')
     this.user = JSON.parse(<string>localStorage.getItem("userLogin"))
     this.findAllPostByUserId()
+    console.log('avatar',this.user.avatar)
   }
 
   public findAllPostByUserId(){
@@ -129,6 +130,9 @@ export class User1Component implements OnInit {
 
   getUser() {
 
+  }
+  public checkAvatar(){
+    return this.user.avatar != null;
   }
 
 }

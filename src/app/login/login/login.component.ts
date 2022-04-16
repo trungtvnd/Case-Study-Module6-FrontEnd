@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenService.getRoles();
       this.name = this.tokenService.getName();
+
     }
   }
   ngSubmit(){

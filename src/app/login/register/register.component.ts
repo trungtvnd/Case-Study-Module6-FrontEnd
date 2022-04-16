@@ -10,7 +10,8 @@ import {SignUp} from "../../model/sign-up-form";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  status = '';
+  checkPass = false;
+  status = 'Please Fill in the form';
   form: any = {};
   signUpForm!: SignUp;
   hide = true;
@@ -19,13 +20,13 @@ export class RegisterComponent implements OnInit {
     Validators.email
   ])
   error1: any = {
-    message: "nouser"
+    message: "User existed, please entry other user"
   }
   error2: any = {
-    message: "noemail"
+    message: "Email existed, please entry other email"
   }
   success: any = {
-    message: "ok"
+    message: "Success"
   }
   checkSuccess: boolean = false;
 
@@ -42,22 +43,43 @@ export class RegisterComponent implements OnInit {
       this.form.name,
       this.form.username,
       this.form.email,
-      this.form.password
+      this.form.password,
+      this.form.rePassword
     )
     this.authService.signUp(this.signUpForm).subscribe(data =>{
       console.log('data = ', data);
       // check loi tra ra tu backend
       if(JSON.stringify(data)==JSON.stringify(this.error1)){
         this.status = 'The username is existed! Please try again!'
+
       }
       if(JSON.stringify(data)==JSON.stringify(this.error2)){
         this.status = 'The email is existed! Please try again!'
+
       }
       if(JSON.stringify(data)==JSON.stringify(this.success)){
+        alert("Register Success, please Login ")
         this.status = 'Create User account success!'
         this.checkSuccess = true;
+        this.router.navigate(['/login'])
+
       }
-      this.router.navigate(['/login'])
+
     })
 
-}}
+
+}
+
+  public checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+    return (group: FormGroup) => {
+      let passwordInput = group.controls[passwordKey],
+        passwordConfirmationInput = group.controls[passwordConfirmationKey];
+      if (passwordInput.value !== passwordConfirmationInput.value) {
+        return passwordConfirmationInput.setErrors({notEquivalent: true})
+      } else {
+        return passwordConfirmationInput.setErrors(null);
+      }
+    }
+  }
+
+}
