@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Post} from "../../model/Post";
 import {User} from "../../model/User";
+import {ChangeProfile} from "../../model/changeProfile";
+import {JwtResponse} from "../../model/jwt-response";
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +18,8 @@ export class UserService {
   }
   findUserByFullName(fullName: string):Observable<User>{
     return this.httpClient.get<User>(`http://localhost:8080/user/post/users/${fullName}`)
+  }
+  changeProfile(user:any):Observable<JwtResponse>{
+    return this.httpClient.put<JwtResponse>(`http://localhost:8080/api/auth/changeProfile`, user)
   }
 }

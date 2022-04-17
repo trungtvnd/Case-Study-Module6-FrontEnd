@@ -15,6 +15,8 @@ import {AuthService} from "../service/auth/auth.service";
 import {UserService} from "../service/blog/user.service";
 import {Router} from "@angular/router";
 import {DialogUserComponent} from "../user/dialog-user/dialog-user.component";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {TokenService} from "../service/auth/token.service";
 
 @Component({
   selector: 'app-home1',
@@ -38,6 +40,16 @@ export class User1Component implements OnInit {
   fb: any = '';
   downloadURL!: Observable<string>;
 
+  formChangeProfile!:FormGroup
+
+  error1:any = {
+    message: 'noemail'
+}
+
+success:any = {
+    message: 'change successfully'
+}
+
   constructor(private postService:PostService,
               private  dialog:MatDialog,
               private storage: AngularFireStorage,
@@ -46,9 +58,17 @@ export class User1Component implements OnInit {
               private httpClient:HttpClient,
               private authService:AuthService,
               private userService:UserService,
-              private router:Router) { }
+              private router:Router,
+              private formBuilder:FormBuilder,
+              private tokenService:TokenService) { }
 
   ngOnInit(): void {
+   this.formChangeProfile = this.formBuilder.group({
+     fullName:['', []],
+     email:['',[Validators.email]],
+     phone:[''],
+     address:['']
+   })
     this.nameLogin = localStorage.getItem('nameLogin')
     this.user = JSON.parse(<string>localStorage.getItem("userLogin"))
     this.findAllPostByUserId()
@@ -134,4 +154,24 @@ export class User1Component implements OnInit {
     return this.user.avatar != null;
   }
 
+  changeProfile() {
+    const changeProfile = {
+      fullName : this.formChangeProfile.value.fullName,
+      email: this.formChangeProfile.value.email,
+      phone: this.formChangeProfile.value.phone,
+      address: this.formChangeProfile.value.address
+    }
+    this.userService.changeProfile(changeProfile).subscribe(data=>{
+      if(JSON.stringify(data) == JSON.stringify(this.error1)){
+        alert('trung email nhap lai')
+      }
+      if(JSON.stringify(data) == JSON.stringify(this.success)){
+        alert('Change Profile Thanh cong')
+        this.tokenService.setName(this.formChangeProfile.value.fullName)
+        window.location.reload()
+      }
+
+    })
+
+  }
 }

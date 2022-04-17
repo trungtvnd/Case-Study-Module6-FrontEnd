@@ -38,7 +38,7 @@
 <!--Header-->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" id="header">
   <div class="container-fluid">
-    <a class="navbar-brand" href="javascript:void(0)">Developer' Blog</a>
+    <a class="navbar-brand" routerLink="/">Developer' Blog</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -117,10 +117,10 @@
             <img class="img-fluid post-thumb " src="{{post.avatarPost}}" alt="image">
           </div>
           <div class="col">
-            <h3 ><a (click)="getPostDetail(post.id)" class="text-link" routerLink="/post">{{post.title}}</a></h3>
+            <h3 ><a (click)="getPostDetail(post.id)" class="text-link" >{{post.title}}</a></h3>
             <div class="meta mb-1"><span class="date">Published 2 days ago</span><span class="time">5 min read</span><span class="comment"><a class="text-link" href="#">8 comments</a></span></div>
             <div class="intro">{{post.description}}</div>
-            <a class="text-link" routerLink="/post">Read more &rarr;</a>
+            <a class="text-link" (click)="getPostDetail(post.id)" >Read more &rarr;</a>
           </div><!--//col-->
         </div><!--//row-->
       </div><!--//item-->

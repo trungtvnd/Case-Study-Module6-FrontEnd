@@ -1,5 +1,5 @@
 export interface JwtResponse {
   token:string,
-  name:string,
+  fullName:string,
   roles: any[]
 }

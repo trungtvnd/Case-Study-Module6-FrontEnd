@@ -4,6 +4,7 @@ import {CommentPost} from "../model/comment-post";
 import {CommentPostService} from "../service/blog/comment-post.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../model/User";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-post',
@@ -20,7 +21,8 @@ export class PostComponent implements OnInit {
   numberLike:number = 0;
 
   constructor(private commentPostService: CommentPostService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private router:Router) {
   }
 
   ngOnInit(): void {
@@ -64,4 +66,9 @@ export class PostComponent implements OnInit {
 
   }
 
+  backHome() {
+    this.router.navigate(['']).then(()=>{
+      window.location.reload();
+    })
+  }
 }

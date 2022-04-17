@@ -6,6 +6,7 @@ import firebase from "firebase/compat";
 import {User} from "../model/User";
 import {PostService} from "../service/blog/post.service";
 import {Post} from "../model/Post";
+import {TokenService} from "../service/auth/token.service";
 
 
 @Component({
@@ -25,13 +26,19 @@ export class HomeComponent implements OnInit {
   constructor(private authService:AuthService,
               private router:Router,
               private userService:UserService,
-              private postService:PostService
+              private postService:PostService,
+              private tokenService: TokenService
               ) { }
 
   ngOnInit(): void {
-    this.checkLogin = this.authService.isLoggedIn
-    this.nameLogin = localStorage.getItem('nameLogin')
+    // this.checkLogin = this.authService.isLoggedIn
+    // this.nameLogin = localStorage.getItem('nameLogin')
     this.roleLogin = localStorage.getItem('roleLogin')
+
+    if(this.tokenService.getToken()){
+      this.checkLogin = true;
+      this.nameLogin = this.tokenService.getName()
+    }
     this.getAllPost()
     this.findUser(this.nameLogin)
   }
@@ -43,6 +50,8 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('idLogin')
     localStorage.removeItem('roleLogin')
     localStorage.removeItem('userLogin')
+    window.sessionStorage.clear()
+    window.location.reload()
 
     this.router.navigate(['/login'])
   }
@@ -61,6 +70,9 @@ export class HomeComponent implements OnInit {
       this.post = data;
       console.log(data)
       localStorage.setItem('post', JSON.stringify(data))
+      this.router.navigate(['post']).then(()=>{
+        window.location.reload();
+      })
     })
 
   }

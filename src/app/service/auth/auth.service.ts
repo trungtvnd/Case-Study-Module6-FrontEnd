@@ -68,12 +68,12 @@ export class AuthService {
       console.log('data', data)
       if(data.token != undefined){
         this.tokenService.setToken(data.token)
-        this.tokenService.setName(data.name)
+        this.tokenService.setName(data.fullName)
         this.name = this.tokenService.getName()
         this.tokenService.setRoles(data.roles)
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.nameLogin = data.name
+        this.nameLogin = data.fullName
         console.log(this.nameLogin)
         for (let i = 0; i < data.roles.length; i++) {
           if(data.roles[i]['authority'] === 'ADMIN'){
@@ -90,7 +90,7 @@ export class AuthService {
         }else {
           this.router.navigate(['/home'])
         }
-        localStorage.setItem("nameLogin", data.name)
+        localStorage.setItem("nameLogin", data.fullName)
         localStorage.setItem("roleLogin", this.role)
 
       }else {

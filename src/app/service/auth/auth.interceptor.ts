@@ -3,21 +3,27 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HTTP_INTERCEPTORS
+  HttpInterceptor, HTTP_INTERCEPTORS, HttpHeaders
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {TokenService} from './token.service';
-const TOKEN_HEADER_KEY = 'Authorization';
+const headers = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+});
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private tokenService: TokenService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = request;
     const token = this.tokenService.getToken();
     if(token!=null){
-      authReq = request.clone({headers: request.headers.set(TOKEN_HEADER_KEY, 'Bearer'+token)})
+      let myHeaders = headers.set('Authorization', 'Bearer ' + token);
+      const AuthRequest = request.clone({ headers: myHeaders });
+      // console.log('Interceptor headers', myHeaders);
+      return next.handle(AuthRequest);
     }
     return next.handle(authReq);
   }
