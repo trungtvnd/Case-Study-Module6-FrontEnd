@@ -39,6 +39,7 @@ import {User1Component} from "./user1/user1.component";
 import {CKEditor5, CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import { PostComponent } from './post/post.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,7 @@ import { PostComponent } from './post/post.component';
     UserComponent,
     DialogUserComponent,
     User1Component,
-    PostComponent
+    PostComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,6 @@ import { PostComponent } from './post/post.component';
     MatCardModule,
     MatMenuModule,
     DashboardModule,
-
     RouterModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,

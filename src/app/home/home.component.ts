@@ -14,6 +14,7 @@ import {Post} from "../model/Post";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  p: number = 1;
   nameLogin!:string | null
   roleLogin!:any
   user!:User
@@ -41,6 +42,8 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('nameLogin')
     localStorage.removeItem('idLogin')
     localStorage.removeItem('roleLogin')
+    localStorage.removeItem('userLogin')
+
     this.router.navigate(['/login'])
   }
 
