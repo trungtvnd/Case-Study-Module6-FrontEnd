@@ -38,6 +38,7 @@ import {Ng2OrderModule} from "ng2-order-pipe";
 import {User1Component} from "./user1/user1.component";
 import {CKEditor5, CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import { PostComponent } from './post/post.component';
+import { DialogChangePasswordComponent } from './user/dialog-change-password/dialog-change-password.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { PostComponent } from './post/post.component';
     DialogUserComponent,
     User1Component,
     PostComponent,
+    DialogChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

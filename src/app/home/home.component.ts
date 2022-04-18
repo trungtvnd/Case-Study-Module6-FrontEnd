@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('userLogin')
     window.sessionStorage.clear()
     window.location.reload()
-
     this.router.navigate(['/login'])
   }
 

@@ -51,7 +51,10 @@ export class RegisterComponent implements OnInit {
       // check loi tra ra tu backend
       if(JSON.stringify(data)==JSON.stringify(this.error1)){
         this.status = 'The username is existed! Please try again!'
-
+      }
+      if(this.form.password != this.form.rePassword){
+        this.checkPass = false
+        this.status = 'Password does not match'
       }
       if(JSON.stringify(data)==JSON.stringify(this.error2)){
         this.status = 'The email is existed! Please try again!'

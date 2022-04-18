@@ -5,7 +5,7 @@ import {Post} from "../model/Post";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {Observable} from "rxjs";
+import {finalize, Observable} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {StatusService} from "../service/blog/status.service";
@@ -17,6 +17,7 @@ import {Router} from "@angular/router";
 import {DialogUserComponent} from "../user/dialog-user/dialog-user.component";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TokenService} from "../service/auth/token.service";
+import {DialogChangePasswordComponent} from "../user/dialog-change-password/dialog-change-password.component";
 
 @Component({
   selector: 'app-home1',
@@ -41,6 +42,7 @@ export class User1Component implements OnInit {
   downloadURL!: Observable<string>;
 
   formChangeProfile!:FormGroup
+  formChangeAvatar!:FormGroup
 
   error1:any = {
     message: 'noemail'
@@ -49,6 +51,8 @@ export class User1Component implements OnInit {
 success:any = {
     message: 'change successfully'
 }
+
+checkChangeAvatar = false;
 
   constructor(private postService:PostService,
               private  dialog:MatDialog,
@@ -69,6 +73,9 @@ success:any = {
      phone:[''],
      address:['']
    })
+    this.formChangeAvatar = this.formBuilder.group({
+      avatar:['']
+    })
     this.nameLogin = localStorage.getItem('nameLogin')
     this.user = JSON.parse(<string>localStorage.getItem("userLogin"))
     this.findAllPostByUserId()
@@ -168,10 +175,60 @@ success:any = {
       if(JSON.stringify(data) == JSON.stringify(this.success)){
         alert('Change Profile Thanh cong')
         this.tokenService.setName(this.formChangeProfile.value.fullName)
-        window.location.reload()
+        this.router.navigate(['/user1']).then(()=>{
+        })
       }
 
     })
 
+  }
+
+  openDialogPassword() {
+    this.dialog.open(DialogChangePasswordComponent, {
+      width: '40%'
+    }).afterClosed().subscribe(()=>{
+
+    });
+  }
+
+  changeAvatar() {
+    this.checkChangeAvatar = true;
+  }
+  onFileSelected(event:any) {
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `RoomsImages/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe((url: any) => {
+        if (url) {
+          console.log(url);
+        }
+      });
+  }
+
+  changeAvatar1() {
+    const changeAvatar = {
+      avatar: this.fb
+    }
+    this.userService.changeAvatar(changeAvatar).subscribe(data=>{
+      console.log(data)
+      alert("change avatar successfully")
+      this.router.navigate(['/user1']).then(()=>{
+      })
+    })
   }
 }

@@ -34,6 +34,9 @@
              data-bs-target="#myModal3"><i class="fas fa-user fa-fw me-2"></i>About Me</a>
         </li>
         <li class="nav-item">
+          <a (click)="openDialogPassword()" class="nav-link nav-link-faded has-icon"><i class="fas fa-user fa-fw me-2"></i>Change Password</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" routerLink="/login"><i class="fas fa-external-link-alt"></i>    Logout</a>
         </li>
       </ul>
@@ -173,6 +176,25 @@
                   class="rounded-circle mt-5" width="150px"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh1P9TAoNMky_yAnynlY7_3jJ6N8kYfYPYWw&usqp=CAU"><span
                   class="font-weight-bold">{{user.email}}</span><span> </span>
+                </div>
+                <div *ngIf="!checkChangeAvatar">
+                  <a (click)="changeAvatar()">Change Avatar</a>
+                </div>
+                <div *ngIf="checkChangeAvatar">
+                  <form [formGroup]="formChangeAvatar" (ngSubmit)="changeAvatar1()" class="example-form ">
+                    <div>
+                      <label><h4>Image</h4></label>
+                      <input type="file"
+                             id="file"
+                             #userPhoto
+                             (change)="onFileSelected($event)"
+                             name="image"
+                             autocomplete="off"
+                      />
+                    </div>
+                    <button mat-raised-button color="primary" style="margin-left: 8px"
+                            >Save</button>
+                  </form>
                 </div>
 
               </div>
