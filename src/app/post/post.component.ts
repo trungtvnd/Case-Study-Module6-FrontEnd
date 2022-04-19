@@ -33,6 +33,8 @@ export class PostComponent implements OnInit {
       post: ['']
     })
     this.post = JSON.parse(<string>localStorage.getItem("post"))
+    // @ts-ignore
+    document.getElementById("contentPost").innerHTML = this.post.content
     this.dateCreate = new Date(this.post.dateCreate).toDateString()
     this.getAllCommentByPostId();
     this.user = JSON.parse(<string>localStorage.getItem("userLogin"))

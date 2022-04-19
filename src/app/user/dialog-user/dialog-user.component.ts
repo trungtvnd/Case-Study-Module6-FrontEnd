@@ -110,7 +110,7 @@ export class DialogUserComponent implements OnInit {
         id: this.formPost.value.id,
         title: this.formPost.value.title,
         dateCreate: new Date(),
-        content: this.formPost.value.content,
+        content: (this.formPost.value.content),
         description: this.formPost.value.description,
         avatarPost: this.fb,
         status: {id: this.formPost.value.status},

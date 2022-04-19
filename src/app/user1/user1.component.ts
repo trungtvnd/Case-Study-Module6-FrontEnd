@@ -228,6 +228,7 @@ checkChangeAvatar = false;
       console.log(data)
       alert("change avatar successfully")
       this.router.navigate(['/user1']).then(()=>{
+        window.location.reload()
       })
     })
   }

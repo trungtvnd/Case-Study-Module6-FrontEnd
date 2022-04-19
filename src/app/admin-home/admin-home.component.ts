@@ -7,6 +7,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Post} from "../model/Post";
 import {PostService} from "../service/blog/post.service";
+import {ChangeStatusUserForm} from "../model/changeStatusUserForm";
+import {AuthService} from "../service/auth/auth.service";
 
 @Component({
   selector: 'app-admin-home',
@@ -23,11 +25,17 @@ export class AdminHomeComponent implements OnInit {
   title: any;
   userName: any;
 
+  checkBlock = false;
+  idBlock = 0
+
+  changeStatusForm!: ChangeStatusUserForm
+
 
   constructor(private httpClient: HttpClient, private adminService: AdminService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private postService: PostService) {
+              private postService: PostService,
+              private authService:AuthService) {
 
   }
 
@@ -53,6 +61,7 @@ export class AdminHomeComponent implements OnInit {
     this.adminService.findAllUser().subscribe((data) => this.users = data)
     this.userForm.reset()
   }
+
 
   getAllPost() {
     this.postService.findAllPost().subscribe((data) => this.posts = data)
@@ -98,20 +107,33 @@ export class AdminHomeComponent implements OnInit {
     localStorage.removeItem('roleLogin')
     this.router.navigate(['/login'])
   }
-
   blockUser(id: any) {
-    if (confirm('Are you sure delete product: ' + '?')) {
-      this.adminService.findUserById(id).subscribe((data) => {
-        this.user = data
-        this.user.status = false
-        localStorage.setItem('userBlock', JSON.stringify(data))
-        localStorage.setItem('idUserBlock', String(data.id))
+    this.changeStatusForm = new  ChangeStatusUserForm("block")
+    if (confirm('Are you sure block this user: ' + '?')) {
+      this.adminService.blockUserStatus(this.changeStatusForm,id).subscribe(data =>{
+        alert("Da block tai khoan")
+        this.router.navigate(['/admin']).then(()=>{
+          window.location.reload();
+        })
+        this.checkBlock=true
+        this.idBlock  = id
+        console.log(data)
       })
-      this.changeStatusUser()
     }
   }
-  public changeStatusUser(){
-    console.log('userBlock',localStorage.getItem('userBlock'))
-    this.adminService.blockUser(JSON.parse(<string>localStorage.getItem('userBlock')), localStorage.getItem('idUserBlock')).subscribe()
+
+  unBlockUser(id: number) {
+    this.changeStatusForm = new  ChangeStatusUserForm("")
+    if (confirm('Are you sure unblock this user: ' + '?')) {
+      this.adminService.blockUserStatus(this.changeStatusForm,id).subscribe(data =>{
+        alert("Da UnBlock tai khoan")
+        this.router.navigate(['/admin']).then(()=>{
+          window.location.reload();
+        })
+        this.checkBlock=true
+        this.idBlock  = id
+        console.log(data)
+      })
+    }
   }
 }
