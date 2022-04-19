@@ -31,15 +31,18 @@ export class HomeComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    // this.checkLogin = this.authService.isLoggedIn
-    // this.nameLogin = localStorage.getItem('nameLogin')
     this.roleLogin = localStorage.getItem('roleLogin')
 
     if(this.tokenService.getToken()){
       this.checkLogin = true;
       this.nameLogin = this.tokenService.getName()
+    }else {
+      localStorage.removeItem('nameLogin')
+      localStorage.removeItem('idLogin')
+      localStorage.removeItem('roleLogin')
+      localStorage.removeItem('userLogin')
     }
-    this.getAllPost()
+    this.getAllPostByStatus()
     this.findUser(this.nameLogin)
   }
 
@@ -56,13 +59,16 @@ export class HomeComponent implements OnInit {
   }
 
   public findUser(fullName:any){
-    this.userService.findUserByFullName(fullName).subscribe(data => {
-      this.user = data;
-      console.log(data.id)
-      localStorage.setItem("idLogin", String(data.id))
-      localStorage.setItem("userLogin", JSON.stringify(this.user))
+    if(this.tokenService.getToken()){
+      this.userService.findUserByFullName(fullName).subscribe(data => {
+        this.user = data;
+        console.log(data.id)
+        localStorage.setItem("idLogin", String(data.id))
+        localStorage.setItem("userLogin", JSON.stringify(this.user))
 
-    })
+      })
+    }
+
   }
   getPostDetail(id: number) {
     this.postService.findPostById(id).subscribe(data => {
@@ -77,6 +83,16 @@ export class HomeComponent implements OnInit {
   }
   public getAllPost(){
     this.postService.findAllPost().subscribe({
+      next:(res)=>{
+        this.posts = res
+
+      }, error:(err)=>{
+        alert('Error while searching product')
+      }
+    })
+  }
+  public getAllPostByStatus(){
+    this.postService.findAllPostByStatusId(2).subscribe({
       next:(res)=>{
         this.posts = res
 
