@@ -37,6 +37,7 @@ import { PostComponent } from './post/post.component';
 import { DialogChangePasswordComponent } from './user/dialog-change-password/dialog-change-password.component';
 import {CKEditorModule} from "ng2-ckeditor";
 import {AdminHomeComponent} from "./admin-home/admin-home.component";
+import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {AdminHomeComponent} from "./admin-home/admin-home.component";
     User1Component,
     PostComponent,
     DialogChangePasswordComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    DialogAlertComponent
   ],
   imports: [
     BrowserModule,

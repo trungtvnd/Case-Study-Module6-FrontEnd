@@ -14,7 +14,7 @@ import {SignInForm} from "../../model/sign-in-form";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  status = '';
+  status = 'Please fill in the form';
   form: any = {};
   signInForm!: SignInForm;
   hide = true;
