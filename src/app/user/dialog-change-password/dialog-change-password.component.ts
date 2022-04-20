@@ -52,14 +52,17 @@ export class DialogChangePasswordComponent implements OnInit {
       if(JSON.stringify(data) == JSON.stringify(this.error2)){
         this.status = 'Confirm Password not match with new password'
       }
+
     if(JSON.stringify(data) == JSON.stringify(this.success)){
       this.status = 'change password successfully'
      window.sessionStorage.clear()
       this.router.navigate(['/login']).then(()=>{
         window.location.reload();
       })
-
     }
+
     })
+
   }
+
 }
